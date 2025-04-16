@@ -32,7 +32,7 @@ Add it in your root settings.gradle at the end of repositories:
 
 ```groovy
     dependencies {
-	        implementation 'com.github.B-H-Makasana:InAppKeyboard:v.1.0.1'
+	        implementation 'com.github.B-H-Makasana:InAppKeyboard:v.1.0.5'
 	}```
 ```
 
