@@ -93,28 +93,8 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.B-H-Makasana"
                 artifactId = "InAppKeyboard"
-                version = "1.0.4"
+                version = "1.0.5"
             }
-//    publications {
-//        create<MavenPublication>("library") {
-//            groupId = "com.github.B-H-Makasana"
-//            artifactId = project.name
-//            version = libVersion
-//            artifact("${layout.buildDirectory.get()}/outputs/aar/InAppKeyboard-release.aar")
-//            pom {
-//                withXml {
-//                    val dependenciesNode = asNode().appendNode("dependencies")
-//                    configurations.implementation.get().incoming.dependencies.forEach {
-//                        if (it.group != null && it.version != null) {
-//                            val dependencyNode = dependenciesNode.appendNode("dependency")
-//                            dependencyNode.appendNode("groupId", it.group)
-//                            dependencyNode.appendNode("artifactId", it.name)
-//                            dependencyNode.appendNode("version", it.version)
-//                        }
-//                    }
-//                }
-//            }
-//        }
         }
     }
 }
