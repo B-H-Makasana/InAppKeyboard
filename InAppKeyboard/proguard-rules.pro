@@ -1,6 +1,6 @@
 -keepattributes *Annotation*, Signature
 
--keep class quipment.qristal.inAppKeyboard.* {
+-keep class com.customKeyboard.inAppKeyboard.* {
     public <methods>;
     protected <methods>;
     public static <methods>;
