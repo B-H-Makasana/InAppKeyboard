@@ -64,6 +64,9 @@ android {
             pickFirsts  += "META-INF/gradle/incremental.annotation.processors"
         }
     }
+    publishing {
+        singleVariant("release") // Required for publishing AAR
+    }
 }
 
 dependencies {
@@ -89,7 +92,7 @@ tasks.withType<Test> {
 publishing {
     publications {
         create<MavenPublication>("library") {
-            groupId = "com.customKeyboard"
+            groupId = "com.github.B-H-Makasana"
             artifactId = project.name
             version = libVersion
             artifact("${layout.buildDirectory.get()}/outputs/aar/${project.name}-release.aar")
