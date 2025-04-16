@@ -95,7 +95,7 @@ publishing {
             groupId = "com.github.B-H-Makasana"
             artifactId = project.name
             version = libVersion
-            artifact("${layout.buildDirectory.get()}/outputs/aar/${project.name}-release.aar")
+            artifact("${layout.buildDirectory.get()}/outputs/aar/InAppKeyboard-release.aar")
             pom {
                 withXml {
                     val dependenciesNode = asNode().appendNode("dependencies")

@@ -19,12 +19,21 @@ Fully built with **Jetpack Compose**
 To use the InAppKeyboard in Android project, follow below steps:
 
 ### 1. Dependency
-
+Add it in your root settings.gradle at the end of repositories:
 ```
-Add the dependency to a module:
+```groovy
+   dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}```
 
 ```groovy
-   api("")
+    dependencies {
+	        implementation 'com.github.B-H-Makasana:InAppKeyboard:v.1.0.1'
+	}```
 ```
 
 ### 2. For use different types of keyboard follow below steps
