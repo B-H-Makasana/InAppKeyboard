@@ -24,7 +24,7 @@ To use the InAppKeyboard in Android project, follow below steps:
 Add the dependency to a module:
 
 ```groovy
-   api("quipment.qristal:keyboardLibrary:3.0.0")
+   api("")
 ```
 
 ### 2. For use different types of keyboard follow below steps
