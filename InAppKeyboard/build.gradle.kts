@@ -64,9 +64,6 @@ android {
             pickFirsts  += "META-INF/gradle/incremental.annotation.processors"
         }
     }
-    publishing {
-        singleVariant("release") // Required for publishing AAR
-    }
 }
 
 dependencies {
@@ -89,33 +86,35 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("library") {
-            groupId = "com.github.B-H-Makasana"
-            artifactId = project.name
-            version = libVersion
-            artifact("${layout.buildDirectory.get()}/outputs/aar/InAppKeyboard-release.aar")
-            pom {
-                withXml {
-                    val dependenciesNode = asNode().appendNode("dependencies")
-                    configurations.implementation.get().incoming.dependencies.forEach {
-                        if (it.group != null && it.version != null) {
-                            val dependencyNode = dependenciesNode.appendNode("dependency")
-                            dependencyNode.appendNode("groupId", it.group)
-                            dependencyNode.appendNode("artifactId", it.name)
-                            dependencyNode.appendNode("version", it.version)
-                        }
-                    }
-                }
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.B-H-Makasana"
+                artifactId = "InAppKeyboard"
+                version = "1.0.4"
             }
+//    publications {
+//        create<MavenPublication>("library") {
+//            groupId = "com.github.B-H-Makasana"
+//            artifactId = project.name
+//            version = libVersion
+//            artifact("${layout.buildDirectory.get()}/outputs/aar/InAppKeyboard-release.aar")
+//            pom {
+//                withXml {
+//                    val dependenciesNode = asNode().appendNode("dependencies")
+//                    configurations.implementation.get().incoming.dependencies.forEach {
+//                        if (it.group != null && it.version != null) {
+//                            val dependencyNode = dependenciesNode.appendNode("dependency")
+//                            dependencyNode.appendNode("groupId", it.group)
+//                            dependencyNode.appendNode("artifactId", it.name)
+//                            dependencyNode.appendNode("version", it.version)
+//                        }
+//                    }
+//                }
+//            }
+//        }
         }
     }
-    repositories {
-        mavenLocal()
-    }
-}
-
-tasks.named<org.jfrog.gradle.plugin.artifactory.task.ArtifactoryTask>("artifactoryPublish") {
-    publications(publishing.publications["library"])
 }
